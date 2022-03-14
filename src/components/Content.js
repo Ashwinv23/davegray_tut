@@ -35,7 +35,7 @@ const Content = () => {
   };
 
   return (
-    <main style={{ minHeight: "calc(100vh - 38px)" }}>
+    <main className="main">
       {items.length ? (
         <ol>
           {items.map((item) => (
