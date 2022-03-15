@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import ItemsList from "./ItemsList";
 
 const Content = () => {
   const [items, setItems] = useState([
@@ -38,21 +38,11 @@ const Content = () => {
     <main className="main">
       {items.length ? (
         <ul>
-          {items.map((item) => (
-            <li className="item" key={item.id}>
-              <input
-                type="checkbox"
-                checked={item.checked}
-                onChange={() => handleChange(item.id)}
-              />
-              <label
-                style={{ textDecoration: item.checked ? "line-through" : null }}
-              >
-                {item.name}
-              </label>
-              <FaTrashAlt onClick={() => handleDelete(item.id)} />
-            </li>
-          ))}
+          <ItemsList
+            items={items}
+            handleChange={handleChange}
+            handleDelete={handleDelete}
+          />
         </ul>
       ) : (
         <p>Your list is empty !</p>
