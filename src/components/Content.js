@@ -37,7 +37,7 @@ const Content = () => {
   return (
     <main className="main">
       {items.length ? (
-        <ol>
+        <ul>
           {items.map((item) => (
             <li className="item" key={item.id}>
               <input
@@ -53,7 +53,7 @@ const Content = () => {
               <FaTrashAlt onClick={() => handleDelete(item.id)} />
             </li>
           ))}
-        </ol>
+        </ul>
       ) : (
         <p>Your list is empty !</p>
       )}

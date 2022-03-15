@@ -48,11 +48,38 @@ footer {
 }
 
 main {
-  text-align: center;
   height: 75vh;
+}
+
+svg {
+  height: 40px;
+  width: 25px;
 }
 
 svg:hover {
   color: red;
   cursor: pointer;
+}
+
+ul {
+  width: 100%;
+  list-style: none;
+}
+
+li {
+  padding: 10px;
+  background-color: rgb(204, 229, 239);
+  border: 1px solid black;
+  margin: 5px;
+  margin: 20px;
+}
+
+input[type="checkbox"] {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
+
+.item > label {
+  margin-right: 20px;
 }
