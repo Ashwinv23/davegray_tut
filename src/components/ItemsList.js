@@ -5,7 +5,11 @@ const ItemsList = ({ items, handleChange, handleDelete }) => {
   return (
     <div>
       {items.map((item) => (
-        <LineItem item={item} handleChange handleDelete />
+        <LineItem
+          item={item}
+          handleChange={handleChange}
+          handleDelete={handleDelete}
+        />
       ))}
     </div>
   );

@@ -67,6 +67,8 @@ ul {
 }
 
 li {
+  display: flex;
+  align-items: center;
   padding: 10px;
   background-color: rgb(204, 229, 239);
   border: 1px solid black;
