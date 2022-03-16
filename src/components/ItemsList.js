@@ -6,6 +6,7 @@ const ItemsList = ({ items, handleChange, handleDelete }) => {
     <div>
       {items.map((item) => (
         <LineItem
+          key={item.id}
           item={item}
           handleChange={handleChange}
           handleDelete={handleDelete}

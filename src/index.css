@@ -48,15 +48,16 @@ footer {
 }
 
 main {
-  height: 75vh;
+  min-height: 75vh;
+  height: calc(100% - 25vh);
 }
 
-svg {
+.item svg {
   height: 40px;
   width: 25px;
 }
 
-svg:hover {
+.item svg:hover {
   color: red;
   cursor: pointer;
 }
@@ -71,9 +72,7 @@ li {
   align-items: center;
   padding: 10px;
   background-color: rgb(204, 229, 239);
-  border: 1px solid black;
-  margin: 5px;
-  margin: 20px;
+  margin: 10px 0px;
 }
 
 input[type="checkbox"] {
@@ -84,4 +83,22 @@ input[type="checkbox"] {
 
 .item > label {
   margin-right: 20px;
+}
+
+.addForm {
+  padding: 10px;
+}
+
+.addForm label {
+  padding: 0 10px;
+}
+
+.addForm svg {
+  height: 20px;
+  width: 20px;
+}
+
+.addForm input[type="text"] {
+  height: 30px;
+  width: 200px;
 }
