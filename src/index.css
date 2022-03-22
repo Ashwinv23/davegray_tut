@@ -102,3 +102,16 @@ input[type="checkbox"] {
   height: 30px;
   width: 200px;
 }
+
+.searchForm {
+  display: flex;
+  margin: 0.25rem 0 0;
+  padding: 0 0.5rem 0.25rem;
+}
+
+.searchForm input[type="text"] {
+  flex-grow: 1;
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+}

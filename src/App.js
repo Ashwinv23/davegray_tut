@@ -3,9 +3,14 @@ import Header from "./components/Header";
 import AddItem from "./components/AddItem";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
+import SearchItem from "./components/SearchItem";
 
 function App() {
   const [newItem, setNewItem] = useState("");
+  const [search, setSearch] = useState("");
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("shopping list"))
+  );
 
   const updateItems = (items) => {
     setItems(items);
@@ -24,24 +29,6 @@ function App() {
     addItem(newItem);
     setNewItem("");
   };
-
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      name: "Get bike serviced",
-      checked: false,
-    },
-    {
-      id: 2,
-      name: "Get car repaired",
-      checked: false,
-    },
-    {
-      id: 3,
-      name: "Get cycle rented",
-      checked: true,
-    },
-  ]);
 
   const handleChange = (id) => {
     const listItems = items.map((item) => {
@@ -64,8 +51,11 @@ function App() {
         handleSubmit={handleSubmit}
         addItem={addItem}
       />
+      <SearchItem search={search} setSearch={setSearch} />
       <Content
-        items={items}
+        items={items.filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase())
+        )}
         handleChange={handleChange}
         handleDelete={handleDelete}
       />
