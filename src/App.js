@@ -59,7 +59,7 @@ function App() {
         handleChange={handleChange}
         handleDelete={handleDelete}
       />
-      <Footer footer="Copyright &copy;" />
+      <Footer items={items} />
     </div>
   );
 }
