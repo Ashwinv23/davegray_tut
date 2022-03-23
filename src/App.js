@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import AddItem from "./components/AddItem";
 import Content from "./components/Content";
@@ -6,21 +6,26 @@ import Footer from "./components/Footer";
 import SearchItem from "./components/SearchItem";
 
 function App() {
+  const API_URL = "http://localhost:3500/items";
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("shopping list"))
-  );
+  const [items, setItems] = useState([]);
 
-  const updateItems = (items) => {
-    setItems(items);
-    localStorage.setItem("shopping list", JSON.stringify(items));
-  };
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const listItems = await response.json();
+        setItems(listItems);
+      } catch (err) {}
+    };
+    fetchItems();
+  }, []);
 
   const addItem = (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const listItems = [...items, { id, checked: false, name: item }];
-    updateItems(listItems);
+    setItems(listItems);
   };
 
   const handleSubmit = (e) => {
@@ -34,12 +39,12 @@ function App() {
     const listItems = items.map((item) => {
       return item.id === id ? { ...item, checked: !item.checked } : item;
     });
-    updateItems(listItems);
+    setItems(listItems);
   };
 
   const handleDelete = (id) => {
     const listItems = items.filter((item) => item.id !== id);
-    updateItems(listItems);
+    setItems(listItems);
   };
 
   return (
