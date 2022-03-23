@@ -10,16 +10,27 @@ function App() {
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
   const [items, setItems] = useState([]);
+  const [fetchErr, setFetchErr] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const response = await fetch(API_URL);
+        if (!response.ok) throw Error("Fetch failed");
         const listItems = await response.json();
         setItems(listItems);
-      } catch (err) {}
+        setFetchErr(null);
+      } catch (err) {
+        setFetchErr(err.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
-    fetchItems();
+
+    setTimeout(() => {
+      fetchItems();
+    }, 2000);
   }, []);
 
   const addItem = (item) => {
@@ -57,13 +68,19 @@ function App() {
         addItem={addItem}
       />
       <SearchItem search={search} setSearch={setSearch} />
-      <Content
-        items={items.filter((item) =>
-          item.name.toLowerCase().includes(search.toLowerCase())
+      <section>
+        {isLoading && <p>Loading...</p>}
+        {fetchErr && <h3 style={{ color: "red" }}>Error: {fetchErr}</h3>}
+        {!fetchErr && !isLoading && (
+          <Content
+            items={items.filter((item) =>
+              item.name.toLowerCase().includes(search.toLowerCase())
+            )}
+            handleChange={handleChange}
+            handleDelete={handleDelete}
+          />
         )}
-        handleChange={handleChange}
-        handleDelete={handleDelete}
-      />
+      </section>
       <Footer items={items} />
     </div>
   );

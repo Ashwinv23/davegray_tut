@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemsList from "./ItemsList";
 
 const Content = ({ items, setItems, handleChange, handleDelete }) => {
