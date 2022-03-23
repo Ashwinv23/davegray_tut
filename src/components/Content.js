@@ -13,7 +13,7 @@ const Content = ({ items, setItems, handleChange, handleDelete }) => {
           />
         </ul>
       ) : (
-        <p>Your list is empty !</p>
+        <p style={{ margin: "2rem 0" }}>Your list is empty !</p>
       )}
     </main>
   );
