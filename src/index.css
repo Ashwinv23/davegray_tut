@@ -116,6 +116,24 @@ input[type="checkbox"] {
   width: 40px;
 }
 
+button {
+  height: 48px;
+  min-width: 40px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  background-color: aliceblue;
+  color: mediumblue;
+  cursor: pointer;
+}
+
+.addForm button:focus,
+button:hover {
+  color: white;
+  background-color: limegreen;
+  outline: none;
+}
+
 .addForm input[type="text"] {
   height: 30px;
   width: 100%;
