@@ -95,10 +95,11 @@ input[type="checkbox"] {
   margin-right: 20px;
 }
 
+/* AddItem CSS Starts */
+
 .addForm {
   padding: 10px;
   display: flex;
-  justify-content: space-between;
   width: 100%;
 }
 
@@ -139,7 +140,10 @@ button:hover {
   width: 100%;
 }
 
+/* AddItem CSS Ends */
+
 .searchForm {
+  width: 100%;
   display: flex;
   margin: 0.25rem 0 0;
   padding: 0 0.5rem 0.25rem;
