@@ -66,10 +66,6 @@ main {
   width: 1250px;
 }
 
-.trash {
-  margin: 0 auto;
-}
-
 .item svg {
   height: 40px;
   width: 25px;
@@ -100,7 +96,7 @@ li {
 }
 
 .item > label {
-  margin-right: 20px;
+  flex-grow: 1;
 }
 
 /* AddItem CSS Starts */
