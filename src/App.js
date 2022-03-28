@@ -39,7 +39,6 @@ function App() {
     const newItem = { id, checked: false, name: item };
     const listItems = [...items, newItem];
     setItems(listItems);
-
     const postOptions = {
       method: "POST",
       headers: {
@@ -47,9 +46,8 @@ function App() {
       },
       body: JSON.stringify(newItem),
     };
-
-    const result = await apiReq(API_URL, postOptions);
-    if (result) setFetchErr(result);
+    const response = await apiReq(API_URL, postOptions);
+    if (response) setFetchErr(response);
   };
 
   const handleSubmit = (e) => {
@@ -65,7 +63,6 @@ function App() {
     });
     setItems(listItems);
     const item = listItems.filter((item) => item.id === id);
-    console.log("checked item ", item);
     const updateOptions = {
       method: "PATCH",
       headers: {
@@ -78,9 +75,13 @@ function App() {
     if (response) setFetchErr("Update failed");
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
+    const delOptions = { method: "DELETE" };
+    const reqUrl = `${API_URL}/${id}`;
+    const response = await apiReq(reqUrl, delOptions);
+    if (response) setFetchErr(response);
   };
 
   return (
