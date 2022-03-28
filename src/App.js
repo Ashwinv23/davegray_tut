@@ -4,6 +4,7 @@ import AddItem from "./components/AddItem";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
 import SearchItem from "./components/SearchItem";
+import apiReq from "./components/apiReq";
 
 function App() {
   const API_URL = "http://localhost:3500/items";
@@ -33,10 +34,22 @@ function App() {
     }, 2000);
   }, []);
 
-  const addItem = (item) => {
+  const addItem = async (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
-    const listItems = [...items, { id, checked: false, name: item }];
+    const newItem = { id, checked: false, name: item };
+    const listItems = [...items, newItem];
     setItems(listItems);
+
+    const postOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newItem),
+    };
+
+    const result = await apiReq(API_URL, postOptions);
+    if (result) setFetchErr(result);
   };
 
   const handleSubmit = (e) => {
@@ -46,11 +59,23 @@ function App() {
     setNewItem("");
   };
 
-  const handleChange = (id) => {
+  const handleChange = async (id) => {
     const listItems = items.map((item) => {
       return item.id === id ? { ...item, checked: !item.checked } : item;
     });
     setItems(listItems);
+    const item = listItems.filter((item) => item.id === id);
+    console.log("checked item ", item);
+    const updateOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ checked: item[0].checked }),
+    };
+    const reqUrl = `${API_URL}/${id}`;
+    const response = await apiReq(reqUrl, updateOptions);
+    if (response) setFetchErr("Update failed");
   };
 
   const handleDelete = (id) => {
@@ -81,7 +106,7 @@ function App() {
           />
         )}
       </section>
-      <Footer items={items} />
+      {/* <Footer items={items} /> */}
     </div>
   );
 }

@@ -7,13 +7,18 @@
     },
     {
       "id": 2,
-      "checked": false,
+      "checked": true,
       "name": "Pizza"
     },
     {
       "id": 3,
       "checked": false,
       "name": "Bread"
+    },
+    {
+      "id": 4,
+      "checked": false,
+      "name": "cool"
     }
   ]
 }
