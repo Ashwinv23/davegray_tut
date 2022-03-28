@@ -12,7 +12,7 @@ const LineItem = ({ item, handleChange, handleDelete }) => {
       <label style={{ textDecoration: item.checked ? "line-through" : null }}>
         {item.name}
       </label>
-      <FaTrashAlt onClick={() => handleDelete(item.id)} />
+      <FaTrashAlt className="trash" onClick={() => handleDelete(item.id)} />
     </li>
   );
 };

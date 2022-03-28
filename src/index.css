@@ -53,13 +53,21 @@ footer {
 }
 
 main {
-  width: 100%;
+  /* width: 100%;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
+  overflow-y: auto; */
+}
+
+.item {
+  width: 1250px;
+}
+
+.trash {
+  margin: 0 auto;
 }
 
 .item svg {
@@ -85,7 +93,7 @@ li {
   margin: 10px 0px;
 }
 
-input[type="checkbox"] {
+.item input[type="checkbox"] {
   height: 40px;
   width: 40px;
   margin-right: 20px;
